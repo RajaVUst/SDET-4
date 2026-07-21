@@ -21,7 +21,7 @@ jobs:
 
     - name: Run Playwright tests
       env:
-        BASE_URL : ${{ secrets.SALMAN_BASE_URL }}
+        BASE_URL: ${{ secrets.SALMAN_BASE_URL }}
       run: npx playwright test paymentSuccess.spec.ts
       
 
