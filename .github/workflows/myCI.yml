@@ -1,0 +1,89 @@
+name: Playwright and API Automation
+
+on:
+  push:
+    branches:
+      - capstone/299171-Salman-Benny
+
+  pull_request:
+    branches:
+      - capstone/299171-Salman-Benny
+
+  workflow_dispatch:
+
+jobs:
+  ui-tests:
+    name: UI Automation Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    defaults:
+      run:
+        working-directory: Playwright_Automation_Final
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Run UI Tests
+        env:
+          BASE_URL: ${{ secrets.SALMAN_BASE_URL }}
+          EMAIL: ${{ secrets.EMAIL }}
+          PASSWORD: ${{ secrets.PASSWORD }}
+        run: npx playwright test tests/ui
+
+      - name: Upload UI Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-ui-report
+          path: Playwright_Automation_Final/playwright-report/
+          retention-days: 30
+
+  api-tests:
+    name: API Automation Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    defaults:
+      run:
+        working-directory: Playwright_Automation_Final
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Run API Tests
+        env:
+          BASE_URL: ${{ secrets.SALMAN_BASE_URL }}
+        run: npx playwright test tests/api
+
+      - name: Upload API Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-api-report
+          path: Playwright_Automation_Final/playwright-report/
+          retention-days: 30

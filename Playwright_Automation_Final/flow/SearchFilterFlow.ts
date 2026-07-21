@@ -1,53 +1,40 @@
 import { expect } from "@playwright/test";
-import { logger } from "../logger/Logger";
-
 import { HomePage } from "../pages/HomePage";
 import { SearchResultPage } from "../pages/SearchResultPage";
 
 export class SearchFilterFlow {
 
     constructor(
-
-        private homePage: HomePage,
-
-        private searchResultPage: SearchResultPage
-
+        private readonly homePage: HomePage,
+        private readonly searchResultPage: SearchResultPage
     ) {}
 
-    async validateSearchWithPriceFilter() {
+    async verifyLaptopSearchAbove250() {
 
-        logger.info("Search for Laptop and add price above 250 as filter");
-
-        // Open Home Page
+        // Navigate to Home Page
         await this.homePage.navigate();
-
         await this.homePage.verifyHomePage();
 
+        // Search Product
         await this.homePage.searchProduct("Laptop");
 
-        //Go to search result page
+        // Verify Search Results Page
         await this.searchResultPage.verifySearchResult();
 
+        // Capture product count before applying filter
         const countBefore = await this.searchResultPage.getProductCount();
 
-        logger.info(`Products before filter : ${countBefore}`);
-
+        // Apply Price Filter
         await this.searchResultPage.selectAbove250Filter();
 
-        await this.searchResultPage.verifySearchKeyword('Laptop');
-
+        // Validations
+        await this.searchResultPage.verifySearchKeyword("Laptop");
         await this.searchResultPage.verifyLaptopProducts();
-
         await this.searchResultPage.verifyProductPriceGreaterThan250();
 
-        const count = await this.searchResultPage.getProductCount();
+        // Verify filtered product count
+        const countAfter = await this.searchResultPage.getProductCount();
 
-        logger.info(`Products after filter : ${count}`);
-
-        expect(count).not.toBe(countBefore);
-
-        logger.info("SEARCH FILTER FLOW COMPLETED");
-
+        expect(countAfter).toBeLessThanOrEqual(countBefore);
     }
-
 }

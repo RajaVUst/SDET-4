@@ -6,7 +6,6 @@ import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import com.config.ConfigManager;
-//import com.utils.TokenManager;
 
 public final class RequestSpec {
 
@@ -15,21 +14,21 @@ public final class RequestSpec {
     public static RequestSpecification requestSpec() {
 
         return new RequestSpecBuilder()
-                .setBaseUri(ConfigManager.getBaseUrl())
-                .addFilter(new AllureRestAssured())
                 .setContentType(ContentType.JSON)
+                .setAccept(ContentType.JSON)
                 .build();
+
     }
 
-    public static RequestSpecification successOK() {
+    public static RequestSpecification bearerRequest(String token) {
 
         return new RequestSpecBuilder()
-                .setBaseUri(ConfigManager.getBaseUrl())
-                .setAccept(ContentType.JSON)
                 .setContentType(ContentType.JSON)
-//                .addHeader("Authorization",
-//                        "Bearer " + TokenManager.getToken())
+                .setAccept(ContentType.JSON)
+                .addHeader("Authorization", "Bearer " + token)
                 .build();
+
     }
+
 
 }

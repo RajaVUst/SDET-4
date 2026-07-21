@@ -43,7 +43,7 @@ export class PaymentSuccessFlow {
 
         //Check the result page
         await this.searchResultPage.verifySearchResult();
-        await this.searchResultPage.openProduct();
+        await this.searchResultPage.openFirstProduct();
 
         //Verify the product and add to cart
         await this.productPage.verifyProductPage();

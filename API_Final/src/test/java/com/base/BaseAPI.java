@@ -1,18 +1,20 @@
 package com.base;
 
-import com.specs.RequestSpec;
-import io.restassured.response.Response;
-
-import static io.restassured.RestAssured.given;
+import com.config.ConfigManager;
+import io.restassured.RestAssured;
+import io.restassured.specification.RequestSpecification;
 
 public class BaseAPI {
 
-    protected Response get(String endpoint) {
+    protected RequestSpecification request() {
 
-        return given()
-                .spec(RequestSpec)
-                .when()
-                .get(endpoint);
+        RestAssured.baseURI = ConfigManager.baseUrl();
+
+        return RestAssured
+                .given()
+                .log()
+                .all();
+
     }
 
 }

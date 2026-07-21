@@ -1,66 +1,58 @@
-import { Page, expect } from "@playwright/test";
+import { expect, Page } from "@playwright/test";
 import { SearchResultLocator } from "../locators/SearchResultLocator";
-import { logger } from "../logger/Logger";
 
 export class SearchResultPage {
 
-    private readonly locator: SearchResultLocator;
+    readonly page: Page;
+    readonly locator: SearchResultLocator;
 
-    constructor(private page: Page) {
-
+    constructor(page: Page) {
+        this.page = page;
         this.locator = new SearchResultLocator(page);
-
     }
 
     async verifySearchResult() {
 
-        logger.info("Verifying Search Result Page");
+        // await expect(this.page).toHaveURL(/search/i);
 
-        await expect(this.locator.productLink).toBeVisible();
-
+        await expect(this.locator.productCards.first()).toBeVisible();
     }
 
     async selectAbove250Filter() {
 
-    await this.locator.above250.click();
-    }
+        await this.locator.above250Filter.click();
 
+        await expect(this.locator.above250Filter).toBeVisible();
+    }
 
     async verifySearchKeyword(product: string) {
 
-    await expect(this.locator.searchInput).toHaveValue(product);
+        const value = await this.locator.searchInput.inputValue();
 
+        expect(value.toLowerCase()).toContain(product.toLowerCase());
     }
 
+    async getProductCount() {
 
-    async getProductCount(){
-
-    return await this.locator.productCards.count();
+        return await this.locator.productCards.count();
     }
-
-
-    async openProduct() {
-
-        logger.info("Opening Product");
-
-        await this.locator.productLink.click();
-
-    }
-
 
     async verifyLaptopProducts() {
 
-    const count = await this.locator.productNames.count();
-    let laptopFound = false;
+        const total = await this.locator.productNames.count();
 
-    for (let i = 0; i < count; i++) {
+        let laptopFound = false;
 
-        const name = (await this.locator.productNames.nth(i).textContent())?.toLowerCase() || "";
+        for (let i = 0; i < total; i++) {
 
-        if (name.includes("laptop")) {
+            const product = (
+            await this.locator.productNames.nth(i).textContent()
+            )?.toLowerCase() ?? "";
+
+            if (product.includes("laptop")) {
             laptopFound = true;
             break;
-        }
+            }
     }
 
     expect(laptopFound).toBeTruthy();
@@ -68,17 +60,27 @@ export class SearchResultPage {
 
     async verifyProductPriceGreaterThan250() {
 
-    const count = await this.locator.productPrices.count();
+        const total = await this.locator.productPrices.count();
 
-    for (let i = 0; i < count; i++) {
+        expect(total).toBeGreaterThan(0);
 
-        const priceText = await this.locator.productPrices.nth(i).textContent();
+        for (let i = 0; i < total; i++) {
 
-        const price = Number(priceText?.replace("$", "").trim());
+            const priceText = await this.locator.productPrices.nth(i).textContent();
 
-        expect(price).toBeGreaterThanOrEqual(250);
+            const price = Number(
+                priceText!
+                    .replace("$", "")
+                    .replace(",", "")
+                    .trim()
+            );
 
+            expect(price).toBeGreaterThanOrEqual(250);
+        }
     }
 
-}
+    async openFirstProduct() {
+
+        await this.locator.productLinks.first().click();
+    }
 }

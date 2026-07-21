@@ -1,12 +1,10 @@
 import { test } from "../fixtures/baseFixtures";
 import { SearchFilterFlow } from "../flow/SearchFilterFlow";
 
-test("Verify Search and Price Filter",async ({homePage,searchResultPage}) => {
+test("Verify Search and Price Filter", async ({ homePage, searchResultPage }) => {
 
-        const flow = new SearchFilterFlow(homePage,searchResultPage);
+    const flow = new SearchFilterFlow(homePage, searchResultPage);
 
-        await flow.validateSearchWithPriceFilter();
+    await flow.verifyLaptopSearchAbove250();
 
-    }
-
-);
+});

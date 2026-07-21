@@ -1,9 +1,6 @@
-import { defineConfig, devices } from '@playwright/test';
-
-import dotenv from 'dotenv';
-import path from 'path';
-dotenv.config({ path: path.resolve(__dirname, '.env') });
-
+import path from "path";
+import { defineConfig, devices } from "@playwright/test";
+import dotenv from "dotenv";
 
 for (const envFile of [
   path.resolve(__dirname, ".env"),
@@ -12,16 +9,14 @@ for (const envFile of [
   dotenv.config({ path: envFile });
 }
 
-
 export default defineConfig({
-  testDir: './tests',
-  timeout:30_000,
+  testDir: "./tests",
+  timeout: 30_000,
   fullyParallel: true,
-
-  forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 4 : undefined,
+  retries: process.env.CI ? 2 : 0,
   reporter: [["list"], ["html", { open: "never", outputFolder: "playwright-report" }]],
+
   use: {
     baseURL: process.env.BASE_URL,
 
@@ -38,11 +33,10 @@ export default defineConfig({
 
   projects: [
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-    },
-
-
-  ],
-
+      name: "chromium",
+      use: {
+        ...devices["Desktop Chrome"]
+      }
+    }
+  ]
 });

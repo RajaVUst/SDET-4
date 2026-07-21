@@ -1,19 +1,11 @@
 package com.config;
 
-public final class ConfigManager {
+public class ConfigManager {
 
-    private ConfigManager() {}
+    private ConfigManager(){}
 
-    public static String getBaseUrl() {
-        return Secrets.BASE_URL;
-    }
-
-    public static String getEmail() {
-        return Secrets.EMAIL;
-    }
-
-    public static String getPassword() {
-        return Secrets.PASSWORD;
+    public static String baseUrl() {
+        return AppConfig.getBaseUrl();
     }
 
 }

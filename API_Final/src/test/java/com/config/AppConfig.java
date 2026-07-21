@@ -1,18 +1,11 @@
 package com.config;
 
-import io.restassured.RestAssured;
+public class AppConfig {
 
-public final class AppConfig {
+    private AppConfig(){}
 
-    private AppConfig() {
-    }
-
-    public static void initialize() {
-
-        RestAssured.baseURI = ConfigManager.getBaseUrl();
-
-//        RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
-
+    public static String getBaseUrl() {
+        return Secrets.BASE_URL;
     }
 
 }
