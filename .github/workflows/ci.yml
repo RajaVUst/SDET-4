@@ -61,20 +61,18 @@ jobs:
 
       - name: Run API Tests
         working-directory: API_final
-        run: mvn test
+        run: mvn clean test
 
       - name: Generate Allure Report
         if: always()
         working-directory: API_final
         run: mvn allure:report
 
-      - name: Upload API Test Results
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: api-test-results
-          path: API_final/target/surefire-reports
-          if-no-files-found: warn
+      - name: Create .env
+        run: |
+          echo "BASE_URL=${{ secrets.API_BASE_URL }}" >> .env
+          echo "PASSWORD=${{ secrets.PASSWORD }}" >> .env
+
 
       - name: Upload Allure Report
         if: always()

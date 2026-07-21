@@ -13,17 +13,12 @@ public class Config {
         try (InputStream input = Config.class
                 .getClassLoader()
                 .getResourceAsStream("config.properties")) {
-
             properties.load(input);
 
         } catch (IOException e) {
-
             throw new RuntimeException(e);
-
         }
-
     }
-
     public static String get(String key) {
 
         return properties.getProperty(key);
