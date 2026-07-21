@@ -3,19 +3,19 @@ name: Playwright CI
 on:
   push:
     branches:
-      - lahari_final_assesment
+      - hemanth_final_assessnment
   pull_request:
     branches:
-      - lahari_final_assesment
+      - hemanth_final_assessnment
 
 jobs:
   playwright:
-    name: Playwright UI Tests
+    name: Ui_Final
     runs-on: ubuntu-latest
 
     defaults:
       run:
-        working-directory: playwright
+        working-directory: UI_Final
 
     steps:
       - name: Checkout Repository
@@ -36,7 +36,7 @@ jobs:
 
       - name: Run Playwright Tests
         env:
-          BASE_URL: ${{ secrets.LAHARI_BASE_URL }}
+          BASE_URL: ${{ secrets.HEMANTH_BASE_URL }}
         run: npx playwright test
 
       - name: Upload Playwright Report
