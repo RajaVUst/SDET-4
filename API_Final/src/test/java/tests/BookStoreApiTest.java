@@ -1,7 +1,6 @@
 package tests;
 
 import base.BaseTest;
-import io.qameta.allure.*;
 import io.restassured.response.Response;
 import models.CreateUserRequest;
 import models.GenerateTokenRequest;
@@ -12,12 +11,12 @@ import java.util.UUID;
 import static io.restassured.RestAssured.given;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.junit.jupiter.api.Assertions.*;
-import static utils.EndPoints.*;
+import static utils.api.*;
 
 public class BookStoreApiTest extends BaseTest {
     @Test
     @DisplayName("Scenario")
-    void verifyBookStoreFlow() {
+    void verifyFlow() {
         String username = "user" + UUID.randomUUID().toString().replace("-", "").substring(0, 8);
         String password = "Password@123";
         Response createResponse =
@@ -25,7 +24,7 @@ public class BookStoreApiTest extends BaseTest {
                         .spec(SpecFactory.requestSpec())
                         .body(new CreateUserRequest(username, password))
                         .when()
-                        .post(CREATE_USER)
+                        .post(Create_user)
                         .then()
                         .spec(SpecFactory.responseSpec(201))
                         .body(matchesJsonSchemaInClasspath("schemas/create_user.json"))
@@ -40,7 +39,7 @@ public class BookStoreApiTest extends BaseTest {
                         .spec(SpecFactory.requestSpec())
                         .body(new GenerateTokenRequest(username, password))
                         .when()
-                        .post(GENERATE_TOKEN)
+                        .post(Token)
                         .then()
                         .spec(SpecFactory.responseSpec(200))
                         .body(matchesJsonSchemaInClasspath("schemas/generated_token.json"))
@@ -54,7 +53,7 @@ public class BookStoreApiTest extends BaseTest {
                         .spec(SpecFactory.requestSpec())
                         .header("Authorization", "Bearer " + token)
                         .when()
-                        .get(GET_BOOKS)
+                        .get(Books)
                         .then()
                         .spec(SpecFactory.responseSpec(200))
                         .body(matchesJsonSchemaInClasspath("schemas/books-schema.json"))
