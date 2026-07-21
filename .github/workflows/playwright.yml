@@ -1,9 +1,10 @@
-name: Playwright UI Tests
+name: UI and API Automation Tests
 
 on:
   push:
-    branches: capstone/307395-jyothsna-v   
-  
+    branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
   ui-tests:
@@ -45,23 +46,70 @@ jobs:
         if: always()
         run: npm run allure:generate
 
-      - name: Upload Allure report
+      - name: Upload UI Allure report
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: allure-report
+          name: ui-allure-report
           path: UIAutomation/allure-report/
 
-      - name: Upload Playwright test results (screenshots/videos/traces)
+      - name: Upload UI test results (screenshots/videos/traces)
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-test-results
+          name: ui-test-results
           path: UIAutomation/test-results/
 
-      - name: Upload logs
+      - name: Upload UI logs
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: test-logs
+          name: ui-logs
           path: UIAutomation/logs/
+
+  api-tests:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ./APIAutomation/API
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Cache Maven dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-maven-
+
+      - name: Run API tests
+        env:
+          API_BASE_URL: ${{ secrets.jyothsna_API_BASE_URL }}
+        run: mvn clean test
+
+      - name: Generate Allure report
+        if: always()
+        run: mvn allure:report
+
+      - name: Upload API Allure report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: api-allure-report
+          path: APIAutomation/API/target/site/allure-maven-plugin/
+
+      - name: Upload API logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: api-logs
+          path: APIAutomation/API/logs/

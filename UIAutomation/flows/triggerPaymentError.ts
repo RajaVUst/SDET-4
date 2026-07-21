@@ -52,4 +52,7 @@ export async function triggerPaymentError(
 
   log('Checking the entered card details are still there for retry');
   await paymentPage.checkFieldsRetainValues(card.name, card.number, card.expiry, card.cvv);
+
+  log('Checking that retrying does not create a duplicate order');
+  await paymentPage.checkNoDuplicateOrderOnRetry();
 }

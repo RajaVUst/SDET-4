@@ -6,6 +6,8 @@ import { log } from '../utils/logger';
 interface CartProduct {
   searchTerm: string;
   id: string;
+  name: string;
+  price: number;
 }
 
 export async function addProductsAndValidateCart(
@@ -31,9 +33,24 @@ export async function addProductsAndValidateCart(
   log('Checking all products are visible in the cart');
   await cartPage.checkProductsInCart(productIds);
 
+  log('Checking each product name matches what was added');
+  for (const product of products) {
+    await cartPage.checkProductName(product.id, product.name);
+  }
+
   log('Checking each product has an image');
   for (const id of productIds) {
     await cartPage.checkProductHasImage(id);
+  }
+
+  log('Checking each product price matches the expected value');
+  for (const product of products) {
+    await cartPage.checkProductPrice(product.id, product.price);
+  }
+
+  log('Checking each product quantity is 1');
+  for (const id of productIds) {
+    await cartPage.checkProductQuantity(id, '1');
   }
 
   log('Checking cart item count matches number of products added');
