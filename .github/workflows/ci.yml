@@ -3,11 +3,11 @@ name: Playwright UI and API Testing
 on:
   push:
     branches:
-      - capstone/299174-monisha
+      - monisha_final_UI
 
   pull_request:
     branches:
-      - capstone/299174-monisha
+      - monisha_final_UI
 
   workflow_dispatch:
 
