@@ -2,9 +2,7 @@ name: UI and API Automation Tests
 
 on:
   push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+    branches: capstone/307395-jyothsna-v  
 
 jobs:
   ui-tests:
