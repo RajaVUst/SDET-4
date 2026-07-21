@@ -1,9 +1,9 @@
 name: Playwright Tests
 on:
   push:
-    branches: capstone/299171-salman-benny
+    branches: capstone/299171-Salman-Benny
   pull_request:
-    branches: capstone/299171-salman-benny
+    branches: capstone/299171-Salman-Benny
 jobs:
   test:
     timeout-minutes: 60
