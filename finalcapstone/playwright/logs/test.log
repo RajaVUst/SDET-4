@@ -1,0 +1,180 @@
+[21-07-2026 10:36:31] INFO : Searching product : headphones
+[21-07-2026 10:36:32] INFO : Search completed
+[21-07-2026 10:36:32] INFO : Applying price filter
+[21-07-2026 10:36:32] INFO : Price filter applied
+[21-07-2026 10:36:32] INFO : Adding product to cart
+[21-07-2026 10:36:32] INFO : Product added to cart
+[21-07-2026 10:36:32] INFO : Opening cart
+[21-07-2026 10:36:32] INFO : Cart opened
+[21-07-2026 10:36:43] INFO : Searching product : headphones
+[21-07-2026 10:36:44] INFO : Search completed
+[21-07-2026 10:36:44] INFO : Applying price filter
+[21-07-2026 10:36:44] INFO : Price filter applied
+[21-07-2026 10:36:44] INFO : Adding product to cart
+[21-07-2026 10:36:44] INFO : Product added to cart
+[21-07-2026 10:36:44] INFO : Opening cart
+[21-07-2026 10:36:44] INFO : Cart opened
+[21-07-2026 10:36:44] INFO : Proceeding to checkout
+[21-07-2026 10:36:44] INFO : Checkout page opened
+[21-07-2026 10:36:44] INFO : Entering guest details
+[21-07-2026 10:36:45] INFO : Guest details entered
+[21-07-2026 10:36:45] INFO : Navigated to payment page
+[21-07-2026 10:36:45] INFO : Entering payment details
+[21-07-2026 10:36:45] INFO : Submitting payment
+[21-07-2026 10:39:07] INFO : Searching product : headphones
+[21-07-2026 10:39:08] INFO : Searching product : headphones
+[21-07-2026 10:39:08] INFO : Search completed
+[21-07-2026 10:39:08] INFO : Applying price filter
+[21-07-2026 10:39:08] INFO : Price filter applied
+[21-07-2026 10:39:08] INFO : Adding product to cart
+[21-07-2026 10:39:08] INFO : Product added to cart
+[21-07-2026 10:39:08] INFO : Opening cart
+[21-07-2026 10:39:08] INFO : Search completed
+[21-07-2026 10:39:08] INFO : Applying price filter
+[21-07-2026 10:39:08] INFO : Cart opened
+[21-07-2026 10:39:08] INFO : Price filter applied
+[21-07-2026 10:39:08] INFO : Proceeding to checkout
+[21-07-2026 10:39:08] INFO : Adding product to cart
+[21-07-2026 10:39:09] INFO : Product added to cart
+[21-07-2026 10:39:09] INFO : Opening cart
+[21-07-2026 10:39:09] INFO : Checkout page opened
+[21-07-2026 10:39:09] INFO : Entering guest details
+[21-07-2026 10:39:09] INFO : Cart opened
+[21-07-2026 10:39:09] INFO : Guest details entered
+[21-07-2026 10:39:09] INFO : Navigated to payment page
+[21-07-2026 10:39:09] INFO : Entering payment details
+[21-07-2026 10:39:10] INFO : Submitting payment
+[21-07-2026 10:53:56] INFO : Searching product : headphones
+[21-07-2026 10:53:56] INFO : Search completed
+[21-07-2026 11:02:55] INFO : Searching product : ${product}
+[21-07-2026 11:02:56] INFO : Search completed
+[21-07-2026 11:03:48] INFO : Searching product : ${product}
+[21-07-2026 11:03:49] INFO : Search completed
+[21-07-2026 11:04:23] INFO : Searching product : ${product}
+[21-07-2026 11:04:23] INFO : Searching product : ${product}
+[21-07-2026 11:04:23] INFO : Searching product : ${product}
+[21-07-2026 11:04:23] INFO : Search completed
+[21-07-2026 11:04:24] INFO : Search completed
+[21-07-2026 11:04:24] INFO : Applying price filter
+[21-07-2026 11:04:24] INFO : Price filter applied
+[21-07-2026 11:04:24] INFO : Search completed
+[21-07-2026 11:04:24] INFO : Applying price filter
+[21-07-2026 11:04:24] INFO : Adding product to cart
+[21-07-2026 11:04:24] INFO : Price filter applied
+[21-07-2026 11:04:24] INFO : Adding product to cart
+[21-07-2026 11:04:24] INFO : Product added to cart
+[21-07-2026 11:04:24] INFO : Opening cart
+[21-07-2026 11:04:24] INFO : Product added to cart
+[21-07-2026 11:04:24] INFO : Opening cart
+[21-07-2026 11:04:24] INFO : Cart opened
+[21-07-2026 11:04:24] INFO : Cart opened
+[21-07-2026 11:04:24] INFO : Proceeding to checkout
+[21-07-2026 11:04:24] INFO : Checkout page opened
+[21-07-2026 11:04:25] INFO : Entering guest details
+[21-07-2026 11:04:25] INFO : Guest details entered
+[21-07-2026 11:04:25] INFO : Navigated to payment page
+[21-07-2026 11:04:25] INFO : Entering payment details
+[21-07-2026 11:04:26] INFO : Submitting payment
+[21-07-2026 11:04:29] INFO : Searching product : ${product}
+[21-07-2026 11:04:29] INFO : Search completed
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
+[${timestamp}] ${level.toUpperCase()} : ${message}
