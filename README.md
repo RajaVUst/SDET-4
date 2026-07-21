@@ -1,72 +1,163 @@
-# SDET-4 Playwright UI Automation Project
+# SDET-4 UI and API Automation Project
 
-This project contains end-to-end UI automation tests for a web application using Playwright and TypeScript. The suite is built around the Page Object Model (POM) and flow-based test scenarios for checkout and cart validation.
+This repository contains a complete end-to-end automation framework for validating both UI and API behavior. The UI tests are implemented with Playwright and TypeScript, while the API tests are built with Java, Maven, Rest-Assured, JUnit 5, and Allure reporting.
 
 ## Overview
 
-The automated tests cover the following user journeys:
+The project is designed to automate key functional flows for a demo e-commerce-style application and verify backend API behavior. It covers:
 
-- Payment processing error validation
-- Remove product validation from the cart
-
-These tests exercise the main application flows through browser automation and verify expected UI behavior, totals, badges, and cart state changes.
+- UI regression and workflow validation
+- API request/response validation
+- Negative and edge-case scenarios
+- Automated execution through GitHub Actions
+- Rich test reporting with Playwright and Allure
 
 ## Tech Stack
 
+### UI Automation
 - TypeScript
 - Playwright
 - Node.js
+- dotenv
 - Winston for logging
-- dotenv for environment variables
+
+### API Automation
+- Java 21
+- Maven
+- Rest-Assured
+- JUnit 5
+- Allure Report
+- Jackson
+- Log4j2
 
 ## Project Structure
 
 ```text
-config/                # Environment and configuration files
-custom/                # Additional utility/custom setup (if used)
-data/                  # Test input data for checkout, payments, and products
-fixtures/              # Base fixtures and shared test setup
-flows/                 # High-level business flow implementations
-locators/              # CSS/XPath locators grouped by page
-logger/                # Logging setup
-pages/                 # Page Object Model classes
-tests/                 # Playwright test specifications
-playwright.config.ts   # Playwright configuration
-package.json           # Project metadata and dependencies
+.github/workflows/        # GitHub Actions CI workflow
+API_final/                 # Maven-based API automation module
+  pom.xml                   # Maven dependencies and plugins
+  src/test/java/            # API test classes and helpers
+  src/test/resources/      # API config and schema files
+UI/                        # Playwright-based UI automation project
+  config/                   # Environment configuration
+  data/                     # Test input data
+  fixtures/                 # Shared fixtures and setup logic
+  flows/                    # Business-flow abstractions
+  locators/                 # Page locators grouped by page
+  logger/                   # Logging utility
+  pages/                    # Page Object Model classes
+  tests/                    # Playwright spec files
+  playwright.config.ts     # Playwright configuration
+  package.json              # Node.js dependencies and scripts
 ```
 
 ## Prerequisites
 
-Make sure the following are installed on your machine:
+Make sure the following tools are installed before running the tests locally:
 
-- Node.js (recommended LTS)
+- Node.js 22 or newer
 - npm
+- Java 21
+- Maven
 
-## Installation
+## Getting Started
 
-From the project root, install dependencies:
+### 1. Clone the repository
 
 ```bash
-npm install
+git clone https://github.com/RajaVUst/SDET-4.git
+cd SDET-4
 ```
 
-Install Playwright browsers:
+### 2. Install UI dependencies
+
+```bash
+cd UI
+npm ci
+```
+
+### 3. Install Playwright browsers
 
 ```bash
 npx playwright install
 ```
 
-If you are running on a Linux environment and need system dependencies as well:
+If you are on Linux and browsers are missing system dependencies, use:
 
 ```bash
 npx playwright install --with-deps
 ```
 
+### 4. Install API dependencies
+
+```bash
+cd ../API_final
+mvn clean test -DskipTests=false
+```
+
+## Running Tests
+
+### UI tests
+
+Run all UI tests from the UI folder:
+
+```bash
+cd UI
+npx playwright test
+```
+
+Run a specific spec file:
+
+```bash
+npx playwright test tests/paymentProcessingError.spec.ts
+```
+
+Run a single test by title:
+
+```bash
+npx playwright test --grep "Payment Processing Error"
+```
+
+Run tests in headed mode:
+
+```bash
+npx playwright test --headed
+```
+
+Open the Playwright HTML report:
+
+```bash
+npx playwright show-report
+```
+
+### API tests
+
+Run all API tests from the API module:
+
+```bash
+cd API_final
+mvn clean test
+```
+
+Generate the Allure report:
+
+```bash
+mvn allure:report
+```
+
+Open the report locally:
+
+```bash
+mvn allure:serve
+```
+
 ## Configuration
 
-The main application URL is configured in [config/Environment.ts](config/Environment.ts).
+### UI configuration
 
-You can also override the base URL at runtime by setting:
+The UI base URL is defined in [UI/config/Environment.ts](UI/config/Environment.ts).
+
+You can override it using the environment variable below:
 
 ```bash
 set BASE_URL=https://your-app-url
@@ -78,81 +169,67 @@ On Linux/macOS:
 export BASE_URL=https://your-app-url
 ```
 
-## Running Tests
+### API configuration
 
-Run all tests:
+The API base URL and password values are stored in [API_final/src/test/resources/config.properties](API_final/src/test/resources/config.properties).
 
-```bash
-npx playwright test
-```
+Update these values if your test environment requires a different target URL or credentials.
 
-Run a specific test file:
+## Covered Test Scenarios
 
-```bash
-npx playwright test tests/paymentProcessingError.spec.ts
-```
+### UI scenarios
+- Payment processing error validation
+- Remove product validation from the cart
+- Checkout flow validation
+- Cart badge and total verification
 
-Run a specific test case by title:
+### API scenarios
+- User creation
+- Authentication token generation
+- Retrieval of books from the demo API
+- Negative flow validation such as duplicate user creation and invalid password handling
 
-```bash
-npx playwright test --grep "Payment Processing Error"
-```
+## CI/CD with GitHub Actions
 
-Run tests in headed mode (visible browser):
+The workflow file at [.github/workflows/ci.yml](.github/workflows/ci.yml) runs both automation suites:
 
-```bash
-npx playwright test --headed
-```
+- UI tests through Playwright
+- API tests through Maven with Allure report generation
 
-Run tests in debug mode:
+It is triggered on:
+- push to the configured branch
+- pull requests to the same branch
+- manual workflow dispatch
 
-```bash
-npx playwright test --debug
-```
+Artifacts produced by the workflow include:
+- Playwright HTML report
+- Maven Surefire reports
+- Allure report
 
-## Test Reports
+## Reporting
 
-Playwright will generate an HTML report after the run. To open it:
-
-```bash
-npx playwright show-report
-```
-
-## Test Coverage
-
-### Payment Processing Error Validation
-
-This flow verifies the journey where a user:
-
-1. Opens the application
-2. Adds a product to the cart
-3. Proceeds to checkout
-4. Enters guest information
-5. Continues to payment
-6. Submits payment details and validates the process
-
-### Remove Product Validation
-
-This flow verifies the cart behavior where a user:
-
-1. Adds multiple products
-2. Removes products one by one
-3. Confirms cart badge updates
-4. Validates subtotal, tax, shipping, and total changes
-5. Confirms the cart becomes empty
-
-## Notes
-
-- The project uses a flow-based structure where business scenarios are implemented in the [flows](flows) folder.
-- Page interactions are encapsulated in the [pages](pages) folder for easier maintenance and reusability.
-- Test data is stored separately in [data](data) to keep tests readable and maintainable.
+- Playwright generates HTML reports for UI tests.
+- Allure produces rich reports for API test execution.
+- Test artifacts are uploaded by the GitHub Actions workflow when the run finishes.
 
 ## Troubleshooting
 
-If you encounter browser-related issues:
+If tests fail, verify the following first:
+
+- The target application URL is correct
+- All dependencies are installed properly
+- Browser dependencies for Playwright are available
+- GitHub secrets are configured correctly for CI runs
+- The relevant test command is executed from the correct folder
+
+If Playwright browsers are missing, reinstall them with:
 
 ```bash
 npx playwright install --force
 ```
 
-If tests fail due to application timing or slow loading, you can increase the default timeout in the Playwright configuration or the environment settings.
+## Notes
+
+- The UI suite follows a Page Object Model approach with flow-based test logic for better maintainability.
+- The API suite is organized into endpoints, models, specs, and tests to keep responsibilities separated.
+- This project is suitable for learning, practicing, and demonstrating automation testing with modern tools.
