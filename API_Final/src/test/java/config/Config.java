@@ -2,11 +2,10 @@ package config;
 
 import io.github.cdimascio.dotenv.Dotenv;
 
-public class ApiConfig
+public class Config
 {
     public static final String BASE_URL = resolveBaseUrl();
-
-    private ApiConfig() {
+    private Config() {
     }
     private static String resolveBaseUrl() {
         Dotenv dotenv = Dotenv.configure().ignoreIfMissing().load();

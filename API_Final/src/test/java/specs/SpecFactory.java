@@ -1,6 +1,6 @@
 package specs;
 
-import config.ApiConfig;
+import config.Config;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.http.ContentType;
@@ -13,7 +13,7 @@ public class SpecFactory {
     }
     public static RequestSpecification requestSpec() {
         return new RequestSpecBuilder()
-                .setBaseUri(ApiConfig.BASE_URL)
+                .setBaseUri(Config.BASE_URL)
                 .setContentType(ContentType.JSON)
                 .setAccept(ContentType.JSON)
                 .build();
