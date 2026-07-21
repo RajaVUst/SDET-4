@@ -27,7 +27,7 @@ public class BookStoreApiTest extends BaseTest {
                         .when()
                         .post(CREATE_USER)
                         .then()
-                        .spec(SpecFactory.responseSpec(201))
+                        .spec(SpecFactory.responseSpec(203))
                         .body(matchesJsonSchemaInClasspath("schemas/create_user.json"))
                         .extract()
                         .response();
