@@ -1,8 +1,6 @@
 import { Page } from "@playwright/test";
-
 import { InventoryPage } from "../pages/InventoryPage";
 import { CartPage } from "../pages/CartPage";
-
 import { ProductData } from "../data/ProductData";
 import { Logger } from "../logger/Logger";
 
@@ -19,10 +17,7 @@ export class RemoveProductValidationFlow {
     }
 
     async execute() {
-
-        Logger.info("================================");
-        Logger.info("Remove Product Validation Flow");
-        Logger.info("================================");
+        
 
         await this.inventoryPage.openApplication();
 

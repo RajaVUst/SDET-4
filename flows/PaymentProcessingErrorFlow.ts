@@ -29,10 +29,6 @@ export class PaymentProcessingErrorFlow {
 
     async execute() {
 
-        Logger.info("=========================================");
-        Logger.info("Payment Processing Error Validation");
-        Logger.info("=========================================");
-
         await this.inventoryPage.openApplication();
 
         await this.inventoryPage.verifyHomeLoaded();
