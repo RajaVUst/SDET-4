@@ -3,13 +3,12 @@ name: UI and API Automation Tests
 on:
   push:
     branches:
-      - monisha_final_UI
-      - capstone/307395-jyothsna-v
+      - capstone/299174-monisha
+      
 
   pull_request:
     branches:
-      - monisha_final_UI
-      - capstone/307395-jyothsna-v
+      - capstone/299174-monisha
 
   workflow_dispatch:
 
