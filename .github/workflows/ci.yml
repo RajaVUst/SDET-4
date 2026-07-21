@@ -41,7 +41,7 @@ jobs:
       - name: Run Playwright tests
         env:
           BASE_URL: ${{ secrets.Monisha_BASE_URL }}
-        run: npx playwright test
+        run: npx playwright test --reporter=html,list
 
       - name: Upload UI Playwright report
         if: always()

@@ -59,7 +59,7 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
 
   reporter: process.env.CI
-    ? [["list"], ["blob"]]
+    ? [["list"], ["html", { open: "never" }]]
     : [["list"], ["html"]],
 
   use: {
