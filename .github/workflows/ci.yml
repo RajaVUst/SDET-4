@@ -1,5 +1,4 @@
-name: Playwright CI
-
+name: Ui & API Ci
 on:
   push:
     branches:
@@ -7,6 +6,9 @@ on:
   pull_request:
     branches:
       - capstone/299167-hemanth
+
+permissions:
+  contents: write
 
 jobs:
   playwright:
@@ -45,3 +47,60 @@ jobs:
         with:
           name: playwright-report
           path: UI_Final/playwright-report/
+
+  api-tests:
+    name: API_Final
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: API_Final
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 22
+          cache: maven
+
+      - name: Run Maven Tests
+        env:
+          API_BASE_URL: ${{ secrets.HEMANTH_API_URL }}
+        run: mvn -B test
+
+      - name: Checkout hemu-pages branch
+        if: always()
+        uses: actions/checkout@v4
+        with:
+          ref: hemu-pages
+          path: hemu-pages
+
+      - name: Generate Allure Report
+        if: always()
+        uses: simple-elf/allure-report-action@master
+        with:
+          allure_results: API_Final/target/allure-results
+          allure_report: allure-report
+          gh_pages: hemu-pages
+          allure_history: allure-history
+
+      - name: Deploy Allure Report to hemu-pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: hemu-pages
+          publish_dir: allure-history
+
+      - name: Upload Maven Test Reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: maven-test-reports
+          path: API_Final/target/surefire-reports/
