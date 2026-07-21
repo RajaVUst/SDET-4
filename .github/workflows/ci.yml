@@ -3,10 +3,10 @@ name: Playwright CI
 on:
   push:
     branches:
-      - hemanth_final_assessnment
+      - capstone/299167-hemanth
   pull_request:
     branches:
-      - hemanth_final_assessnment
+      - capstone/299167-hemanth
 
 jobs:
   playwright:
