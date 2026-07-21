@@ -74,9 +74,13 @@ jobs:
       - name: Run API Tests
         run: mvn clean test
 
-      - name: Upload Allure Results
+      - name: Generate Allure Report
+        if: always()
+        run: mvn allure:report
+
+      - name: Upload Allure Report
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: allure-results
-          path: api/target/allure-results
+          name: allure-report
+          path: api/target/site/allure-maven-plugin
