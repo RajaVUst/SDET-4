@@ -14,7 +14,7 @@ export class LoginLocator{
 
     constructor(page:Page){
 
-         this.loginHead = page.getByRole("heading",{name:});
+         this.loginHead = page.getByRole("heading",{name:"Sign In"});
          this.email= page.getByLabel('login-email');
          this.password = page.getByLabel('login-password');
          this.demoUser = page.getByRole("button", {name: /Alice Johnson/i});

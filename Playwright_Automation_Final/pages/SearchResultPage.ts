@@ -33,7 +33,7 @@ export class SearchResultPage {
     }
 
 
-    async getProductCount(): Promise<number> {
+    async getProductCount(){
 
     return await this.locator.productCards.count();
     }

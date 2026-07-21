@@ -15,7 +15,7 @@ export class PaymentLocator {
     constructor(page: Page) {
 
         this. cardHolder = page.getByTestId("payment-card-name");
-        this.cardNumber = page.getByTestId("payment-card-name");
+        this.cardNumber = page.getByTestId("payment-card-number");
 
         this.expiry = page.getByTestId("payment-expiry");
 

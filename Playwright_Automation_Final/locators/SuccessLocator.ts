@@ -12,7 +12,7 @@ export class SuccessLocator {
 
     constructor(page: Page) {
 
-        this.orderConfirmed = page.getByRole("heading", {name:"Order Confirmed !"});
+        this.orderConfirmed = page.getByRole("heading", {name:"Order Confirmed!"});
 
         this.orderId = page.locator("[data-testid='order-number']");
     
