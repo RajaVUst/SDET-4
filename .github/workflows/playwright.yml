@@ -2,15 +2,13 @@ name: Playwright UI Tests
 
 on:
   push:
-    branches: [main]
+    branches: capstone/307395-jyothsna-v   
   
 
 jobs:
   ui-tests:
     runs-on: ubuntu-latest
 
-    # Everything runs inside the UIAutomation folder,
-    # so this workflow only ever touches the Playwright project.
     defaults:
       run:
         working-directory: ./UIAutomation
@@ -31,7 +29,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Create .env file
-        run: echo "BASE_URL=https://chess-agent-83252463.figma.site" > .env
+        run: echo "BASE_URL=${{ secrets.BASE_URL }}" > .env
 
       - name: Run Playwright tests
         run: npx playwright test
