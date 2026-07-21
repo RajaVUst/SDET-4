@@ -15,6 +15,6 @@ export const Environment = {
     ADDRESS: "Hyderabad",
     CITY: "Hyderabad",
     STATE: "Telangana",
-    ZIP: "500008",
+    ZIP: "50000",
     COUNTRY: "INDIA"
 };
