@@ -33,7 +33,7 @@ export default defineConfig({
 
     navigationTimeout: 30_000,
 
-    headless: false,
+    headless: true,
   },
 
   projects: [
