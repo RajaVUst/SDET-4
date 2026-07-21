@@ -5,8 +5,7 @@ import { CartPage } from '../pages/CartPage';
 import { CheckoutPage } from '../pages/CheckoutPage';
 import { PaymentPage } from '../pages/PaymentPage';
 
-// A fixture lets every test just ask for "loginPage", "cartPage", etc.
-// instead of writing "new LoginPage(page)" at the top of every test.
+
 type MyFixtures = {
   loginPage: LoginPage;
   productsPage: ProductsPage;

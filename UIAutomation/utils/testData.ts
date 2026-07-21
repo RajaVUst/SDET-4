@@ -8,7 +8,7 @@ export const cartProducts = [
 
 export const errorTriggerCard = {
   name: 'Alice',
-  number: '4111 1111 1111 1111', // this specific card triggers a processing error per the site's own hint text
+  number: '4111 1111 1111 1111', 
   expiry: '12/30',
   cvv: '123',
 };
