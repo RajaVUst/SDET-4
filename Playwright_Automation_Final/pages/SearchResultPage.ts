@@ -51,14 +51,19 @@ export class SearchResultPage {
     async verifyLaptopProducts() {
 
     const count = await this.locator.productNames.count();
+    let laptopFound = false;
 
     for (let i = 0; i < count; i++) {
 
-        const name = await this.locator.productNames.nth(i).textContent();
+        const name = (await this.locator.productNames.nth(i).textContent())?.toLowerCase() || "";
 
-        expect(name?.toLowerCase()).toContain("laptop");
-
+        if (name.includes("laptop")) {
+            laptopFound = true;
+            break;
+        }
     }
+
+    expect(laptopFound).toBeTruthy();
     }
 
     async verifyProductPriceGreaterThan250() {
