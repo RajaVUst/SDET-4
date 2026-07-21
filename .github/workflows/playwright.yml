@@ -14,12 +14,15 @@ jobs:
       with:
         node-version: lts/*
     - name: Install dependencies
+      working-directory: Playwright_Automation_Final
       run: npm ci
 
     - name: Install Playwright Browsers
+      working-directory: Playwright_Automation_Final
       run: npx playwright install --with-deps
 
     - name: Run Playwright tests
+      working-directory: Playwright_Automation_Final
       env:
         BASE_URL: ${{ secrets.SALMAN_BASE_URL }}
       run: npx playwright test paymentSuccess.spec.ts
@@ -30,5 +33,5 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: playwright-report
-        path: playwright-report/
+        path: Playwright_Automation_Final/playwright-report/
         retention-days: 30
