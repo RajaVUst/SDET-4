@@ -20,11 +20,11 @@ export class PaymentPage {
 
         await this.locator.cardHolder.fill("Alice Johnson");
 
-        await this.locator.cardNumber.fill(Environment.CARD_NUMBER);
+        await this.locator.cardNumber.fill("4024007153361885");
 
-        await this.locator.expiry.fill(Environment.CARD_EXPIRY);
+        await this.locator.expiry.fill("12/30");
 
-        await this.locator.cvv.fill(Environment.CARD_CVV);
+        await this.locator.cvv.fill("123");
 
     }
 
